@@ -4,7 +4,7 @@
 
 Status: #Child 
 
-Tags: #InvestmentThesis #Khyati 
+Tags: #InvestmentThesis #K 
 
 Toy Draft
 
