@@ -1,1 +1,0 @@
-[[Adaptive Tree Walk Protocol]]

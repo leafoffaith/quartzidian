@@ -1,4 +1,0 @@
-- Top artists
-- Top tracks 
-- Playlist
-- Final Wrap Up and Deployment

@@ -1,3 +1,0 @@
-Connectionless
-No reservation beforehand 
-
