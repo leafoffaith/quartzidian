@@ -10,7 +10,7 @@ Tags: #InvestmentThesis #K
 - Enzia Reference – [https://www.enzia.vc/perspective-posts/enzia-investment-thesis-higher-education](https://www.enzia.vc/perspective-posts/enzia-investment-thesis-higher-education) The above reference website is used to infer the desired structure of the toy investment thesis
 - [[Toy Articles]]
 - [[Types of Toys]]
-
--  [[Investment Thesis Structure]]
+- [[Investment Thesis Structure]]
+- 
 
 # References
