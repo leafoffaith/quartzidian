@@ -2,9 +2,9 @@
 
 19:03
 
-Status: #Child  #
+Status: #Child  
 
-Tags: #Khyati 
+Tags: #K  
 
 Types of Toys
 

@@ -4,7 +4,7 @@
 
 Status: #adult 
 
-Tags: #InvestmentThesis #Khyati 
+Tags: #InvestmentThesis #K
 
 Toy Thesis Main Node
 
