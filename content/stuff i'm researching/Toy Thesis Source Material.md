@@ -11,6 +11,5 @@ Tags: #InvestmentThesis #K
 - [[Toy Articles]]
 - [[Types of Toys]]
 - [[Investment Thesis Structure]]
-- 
 
 # References
