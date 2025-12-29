@@ -25,4 +25,4 @@ tags:
   - "review"
   - "to-watch"
 ---
-refer to [[rating]] for what the score means
+refer to [[Rating]] for what the score means
