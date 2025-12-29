@@ -4,7 +4,7 @@
 
 [Staff.java](Staff%20Management%20System%208014%20d951f82b022f4ea0893b293b1e5b549f/Staff.java)
 
-[StaffManager.java](Staff%20Management%20System%208014%20d951f82b022f4ea0893b293b1e5b549f/StaffManager.java)
+[StaffManager.java](StaffManager.java.md)
 
 [students.TXT](Staff%20Management%20System%208014%20d951f82b022f4ea0893b293b1e5b549f/students.txt)
 
