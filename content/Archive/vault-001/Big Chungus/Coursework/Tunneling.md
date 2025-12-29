@@ -1,0 +1,5 @@
+In the physical world, tunneling is a way to cross terrain or boundaries that could not normally be crossed. Similarly, in networking, tunnels are a method for transporting data across a network using [protocols](https://www.cloudflare.com/learning/network-layer/what-is-a-protocol/) that are not supported by that network. Tunneling works by encapsulating packets: wrapping packets inside of other [packets](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/). (Packets are small pieces of data that can be re-assembled at their destination into a larger file.)
+
+Tunneling is often used in [virtual private networks (VPNs)](https://www.cloudflare.com/learning/access-management/what-is-a-vpn/). It can also set up efficient and secure connections between networks, enable the usage of unsupported network protocols, and in some cases allow users to bypass [firewalls](https://www.cloudflare.com/learning/security/what-is-a-firewall/).
+
+[What is tunneling? | Tunneling in networking | Cloudflare](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-tunneling/)

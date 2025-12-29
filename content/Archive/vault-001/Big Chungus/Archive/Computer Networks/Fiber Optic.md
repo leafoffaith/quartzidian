@@ -1,0 +1,5 @@
+Fiber optic cables are made up of thin strands of glass or plastic that are capable of transmitting data as light signals. These strands, known as optical fibers, are extremely thin, typically only a few thousandths of an inch in diameter. They are arranged in a bundle and surrounded by protective layers of insulation and a protective coating to make up the cable.
+
+The glass or plastic material used in the optical fibers is carefully chosen to have a specific refractive index, which determines how light travels through the fiber. This allows the fiber to transmit light over long distances without losing its strength or clarity.
+
+Fiber optic cables are known for their high bandwidth and immunity to electromagnetic interference, making them suitable for use in high-speed networks. They are also more durable and have a longer lifespan than other types of cables, such as copper cables.

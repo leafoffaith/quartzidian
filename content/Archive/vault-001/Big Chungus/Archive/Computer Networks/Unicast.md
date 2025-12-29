@@ -1,0 +1,3 @@
+Unicast is the term used to describe communication where a piece of information is sent from one point to another point. In this case there is just one sender, and one receiver.
+
+Unicast transmission, in which a packet is sent from a single source to a specified destination, is still the predominant form of transmission on LANs and within the Internet. All LANs (e.g. [Ethernet](https://erg.abdn.ac.uk/users/gorry/course/lan-pages/enet.html)) and [IP networks](https://erg.abdn.ac.uk/users/gorry/course/inet-pages/ip.html) support the unicast transfer mode, and most users are familiar with the standard unicast applications (e.g. http, smtp, ftp and telnet) which employ the [TCP](https://erg.abdn.ac.uk/users/gorry/course/inet-pages/tcp.html) transport protocol.
