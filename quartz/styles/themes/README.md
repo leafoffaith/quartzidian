@@ -1,13 +1,13 @@
-# Catppuccin
+# Hojicha
 
-- Theme: Catppuccin
-- Author: <a href="https://github.com/catppuccin/obsidian" target="_blank" rel="noopener noreferrer">Marshall Beckrich</a>
+- Theme: Hojicha
+- Author: <a href="https://github.com/pr0methevs" target="_blank" rel="noopener noreferrer">pr0methevs</a>
 
 ## Preview
 
-[Open live preview (Quartz)](https://quartz-themes.github.io/catppuccin/)
+[Open live preview (Quartz)](https://quartz-themes.github.io/hojicha/)
 
-[Open live preview (Publish)](https://publish.saberzero.one/catppuccin)
+[Open live preview (Publish)](https://publish.saberzero.one/hojicha)
 
 ## Usage (Quartz)
 
@@ -15,7 +15,7 @@
 
 ```yaml
 env:
-  THEME_NAME: catppuccin
+  THEME_NAME: hojicha
 ```
 
 ```yaml
@@ -28,7 +28,7 @@ env:
 ```bash
 curl -s -S -o action.sh https://raw.githubusercontent.com/saberzero1/quartz-themes/master/action.sh
 
-./action.sh catppuccin
+./action.sh hojicha
 ```
 
 ### Manual install
