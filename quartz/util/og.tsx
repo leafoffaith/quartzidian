@@ -14,7 +14,7 @@ import { styleText } from "util"
 const defaultHeaderWeight = [700]
 const defaultBodyWeight = [400]
 
-export async function getSatoriFonts(headerFont: FontSpecification, bodyFont: FontSpecification) {
+export async function getSatoriFonts(headerFont: FontSpecification, bodyFont: FontSpecification, fontOrigin: string = "googleFonts") {
   // Get all weights for header and body fonts
   const headerWeights: FontWeight[] = (
     typeof headerFont === "string"
@@ -29,27 +29,55 @@ export async function getSatoriFonts(headerFont: FontSpecification, bodyFont: Fo
   const bodyFontName = typeof bodyFont === "string" ? bodyFont : bodyFont.name
 
   // Fetch fonts for all weights and convert to satori format in one go
-  const headerFontPromises = headerWeights.map(async (weight) => {
-    const data = await fetchTtf(headerFontName, weight)
-    if (!data) return null
-    return {
-      name: headerFontName,
-      data,
-      weight,
-      style: "normal" as const,
-    }
-  })
+  const headerFontPromises = headerWeights.flatMap((weight) => [
+    fetchTtf(headerFontName, weight, fontOrigin).then((data) =>
+      data
+        ? {
+          name: headerFontName,
+          data,
+          weight,
+          style: "normal" as const,
+        }
+        : null,
+    ),
+    fontOrigin === "local"
+      ? fetchTtfItalic(headerFontName, weight, fontOrigin).then((data) =>
+        data
+          ? {
+            name: headerFontName,
+            data,
+            weight,
+            style: "italic" as const,
+          }
+          : null,
+      )
+      : Promise.resolve(null),
+  ])
 
-  const bodyFontPromises = bodyWeights.map(async (weight) => {
-    const data = await fetchTtf(bodyFontName, weight)
-    if (!data) return null
-    return {
-      name: bodyFontName,
-      data,
-      weight,
-      style: "normal" as const,
-    }
-  })
+  const bodyFontPromises = bodyWeights.flatMap((weight) => [
+    fetchTtf(bodyFontName, weight, fontOrigin).then((data) =>
+      data
+        ? {
+          name: bodyFontName,
+          data,
+          weight,
+          style: "normal" as const,
+        }
+        : null,
+    ),
+    fontOrigin === "local"
+      ? fetchTtfItalic(bodyFontName, weight, fontOrigin).then((data) =>
+        data
+          ? {
+            name: bodyFontName,
+            data,
+            weight,
+            style: "italic" as const,
+          }
+          : null,
+      )
+      : Promise.resolve(null),
+  ])
 
   const [headerFonts, bodyFonts] = await Promise.all([
     Promise.all(headerFontPromises),
@@ -62,19 +90,36 @@ export async function getSatoriFonts(headerFont: FontSpecification, bodyFont: Fo
     ...bodyFonts.filter((font): font is NonNullable<typeof font> => font !== null),
   ]
 
+  console.log(
+    styleText("cyan", `\nLoaded ${fonts.length} font variants for OG images`),
+  )
+  fonts.forEach((font) => {
+    console.log(
+      styleText("cyan", `  - ${font.name} (weight: ${font.weight}, style: ${font.style})`),
+    )
+  })
+
   return fonts
 }
 
 /**
- * Get the `.ttf` file of a google font
- * @param fontName name of google font
+ * Get the `.ttf` file of a google font or local font
+ * @param fontName name of google font or local font
  * @param weight what font weight to fetch font
- * @returns `.ttf` file of google font
+ * @param fontOrigin whether to fetch from google fonts or use local fonts
+ * @returns `.ttf` file of font
  */
 export async function fetchTtf(
   rawFontName: string,
   weight: FontWeight,
+  fontOrigin: string = "googleFonts",
 ): Promise<Buffer<ArrayBufferLike> | undefined> {
+  // Handle local fonts
+  if (fontOrigin === "local") {
+    return await fetchLocalFont(rawFontName, weight)
+  }
+
+  // Handle Google Fonts
   const fontName = rawFontName.replaceAll(" ", "+")
   const cacheKey = `${fontName}-${weight}`
   const cacheDir = path.join(QUARTZ, ".quartz-cache", "fonts")
@@ -115,6 +160,118 @@ export async function fetchTtf(
   await fs.writeFile(cachePath, fontData)
 
   return fontData
+}
+
+/**
+ * Get the italic `.ttf` file of a local font
+ * @param rawFontName name of local font
+ * @param weight what font weight to fetch font
+ * @param fontOrigin whether to fetch from google fonts or use local fonts
+ * @returns `.ttf` file of italic font
+ */
+export async function fetchTtfItalic(
+  rawFontName: string,
+  weight: FontWeight,
+  fontOrigin: string = "googleFonts",
+): Promise<Buffer<ArrayBufferLike> | undefined> {
+  // Only handle local fonts for italic
+  if (fontOrigin === "local") {
+    return await fetchLocalFontItalic(rawFontName, weight)
+  }
+
+  return undefined
+}
+
+/**
+ * Load a local font file from the static/fonts directory
+ * @param fontName name of the local font
+ * @param weight font weight to load
+ * @returns font file data or undefined if not found
+ */
+async function fetchLocalFont(
+  fontName: string,
+  weight: FontWeight,
+): Promise<Buffer<ArrayBufferLike> | undefined> {
+  // Map font weights to Reforma font variants
+  const weightMap: { [key: number]: string } = {
+    300: "Blanca",
+    400: "Gris",
+    500: "Gris",
+    700: "Negra",
+    900: "UltraNegra",
+  }
+
+  const variant = weightMap[weight as number] || "Gris"
+
+  // Try to find the font file - check common locations
+  const fontPaths = [
+    path.join(QUARTZ, "static", "fonts", fontName, `${fontName}-${variant}.ttf`),
+    path.join(QUARTZ, "static", "fonts", fontName, `${fontName}-${variant}.woff2`),
+    path.join(QUARTZ, "static", "fonts", fontName, `${fontName}-${variant}.woff`),
+  ]
+
+  for (const fontPath of fontPaths) {
+    try {
+      const fontData = await fs.readFile(fontPath)
+      console.log(
+        styleText(
+          "green",
+          `  ✓ Loaded local font: ${fontName} (weight ${weight}) from ${path.relative(process.cwd(), fontPath)}`,
+        ),
+      )
+      return fontData
+    } catch (error) {
+      // Try next path
+    }
+  }
+
+  console.warn(
+    styleText(
+      "yellow",
+      `\nWarning: Failed to load local font ${fontName} with weight ${weight}. Tried paths: ${fontPaths.join(", ")}`,
+    ),
+  )
+  return undefined
+}
+
+/**
+ * Load a local italic font file from the static/fonts directory
+ * @param fontName name of the local font
+ * @param weight font weight to load
+ * @returns italic font file data or undefined if not found
+ */
+async function fetchLocalFontItalic(
+  fontName: string,
+  weight: FontWeight,
+): Promise<Buffer<ArrayBufferLike> | undefined> {
+  // Map font weights to Reforma font variants
+  const weightMap: { [key: number]: string } = {
+    300: "BlancaItalica",
+    400: "GrisItalica",
+    500: "GrisItalica",
+    700: "NegraItalica",
+    900: "UltraNegraItalica",
+  }
+
+  const variant = weightMap[weight as number] || "GrisItalica"
+
+  // Try to find the font file - check common locations
+  const fontPaths = [
+    path.join(QUARTZ, "static", "fonts", fontName, `${fontName}-${variant}.ttf`),
+    path.join(QUARTZ, "static", "fonts", fontName, `${fontName}-${variant}.woff2`),
+    path.join(QUARTZ, "static", "fonts", fontName, `${fontName}-${variant}.woff`),
+  ]
+
+  for (const fontPath of fontPaths) {
+    try {
+      const fontData = await fs.readFile(fontPath)
+      return fontData
+    } catch (error) {
+      // Try next path
+    }
+  }
+
+  return undefined
 }
 
 export type SocialImageOptions = {
