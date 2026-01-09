@@ -6,7 +6,7 @@ I was ‘prompting’ my partner, let’s call them - Sarah, asking endless ques
 
 But it was pretty good at coming up with insights into my mental makeup. It recognised correctly that I have a pattern of running from discomfort, which Sarah has often pointed out, even if I’ve brushed it aside. It was good, if not better, at weighing the two offers to see which one was more cost-effective for me. It was also good at charting out the potential career paths the respective jobs will set me up for.
 
-It did all of that; it seemingly objectified everything. It gave a shot at empathy but always leaned on being clinically honest. It was exhausting. Now, at this point, I was more confused than ever, because my brain does not operate along the same psychotic proportions of rationality that make an option “the clearly better choice” for Claude.
+It did all of that; it seemingly objectified everything. It gave a shot at empathy but always leaned on being clinically honest and it was exhausting. Now, at this point, I was more confused than ever, because my brain does not operate along the same psychotic proportions of rationality that make an option “the clearly better choice” for Claude.
 
 There was also the matter of my “hunch”, a gut feeling of which job I should take, which an AI Chatbot will never quantify. It also won’t quantify Sarah’s ANNOYANCE with me asking her the same question for days on end. Going back and forth. It won’t quantify the care they had for me.
 
