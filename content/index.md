@@ -8,6 +8,6 @@ title: a collection of notes :)
 
 <a href="/blog">blog</a> is where my long form content lives.
 
-<a href="/stuff-i'm-researching">stuff i'm researching</a> is a hodgepodge of research for stuff that intrigues me and the people around me.
+<a href="/product-management">product management</a> is a hodgepodge of research/a blog for product management case studies 
 
 in <a href='/about'>about</a> you can find more about me and my work!
