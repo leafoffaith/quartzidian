@@ -1,4 +1,4 @@
 - get a job that pays me 1.5L a month
 - leave this job
-- lose weight to 70kgs and not gain in back
-- 
+- lose weight to 69kgs and not gain in back
+-in progress...
