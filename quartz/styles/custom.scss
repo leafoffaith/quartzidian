@@ -1,2 +1,15 @@
 @use "./base.scss";
 @use "./themes";
+
+@font-face {
+  font-family: "biro_script_standardRgus";
+  src:
+    url("/static/font/biro_script_standard_us.woff2") format("woff2"),
+    url("/static/font/biro_script_standard_us.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.content-meta {
+  font-family: biro_script_standardRgus, var(--bodyFont);
+}
