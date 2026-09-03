@@ -1,0 +1,6 @@
+- lose weight to 69kgs and not gain it back
+- complete another journal
+- take a trip to Vietnam
+- take my dog on a long road trip
+- move to a different country/finalize it
+- start learning another language, give one to two exams at least

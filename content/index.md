@@ -7,5 +7,3 @@ title: a collection of notes :)
 <!-- link to blog folder and all pages in it -->
 
 <a href="/blog">blog</a> is where my long form content lives.
-
-in <a href='/about'>about</a> you can find more about me and my work!
