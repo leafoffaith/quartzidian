@@ -4,3 +4,4 @@
 - take my dog on a long road trip
 - move to a different country/finalize it
 - start learning another language, give one to two exams at least
+...more to be added
